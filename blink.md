@@ -1,5 +1,7 @@
 # Пример мигания светодиодом
 
+## используем прямой доступ к пинам через /sys
+
 В этом примере используем pin 18
 ```bash
 #   приготавливает пин для работы с ним
@@ -20,5 +22,22 @@ echo "0" > /sys/class/gpio/gpio18/value
 echo "4" > /sys/class/gpio/export
 echo "in" > /sys/class/gpio/gpio4/direction
 cat /sys/class/gpio/gpio4/value
+```
+
+## Пример на питоне
+
+```python
+import RPi.GPIO as GPIO # импорт библиотеки
+from time import sleep # функция sleep (аналог delay)
+ 
+GPIO.setwarnings(False) # игнорируем предупреждения
+GPIO.setmode(GPIO.BOARD) # режим физической маркировки пинов (как на самой плате)
+GPIO.setup(8, GPIO.OUT, initial=GPIO.LOW) # режим работы пина на вывод, начальное значение низкое.
+
+while True: # бесконечный цикл (аналон loop()
+ GPIO.output(8, GPIO.HIGH) # подаем высокий сигнал
+ sleep(1) # ждем секунду
+ GPIO.output(8, GPIO.LOW) # подаем низкий
+ sleep(1) # ждем секунду
 ```
 
