@@ -26,6 +26,8 @@ cat /sys/class/gpio/gpio4/value
 
 ## Пример на питоне
 
+откройте nano blink.py и скопируйте туда код:
+
 ```python
 import RPi.GPIO as GPIO # импорт библиотеки
 from time import sleep # функция sleep (аналог delay)
@@ -41,3 +43,8 @@ while True: # бесконечный цикл (аналон loop()
  sleep(1) # ждем секунду
 ```
 
+Запуск программы:
+
+```bash
+python blink.py
+```
