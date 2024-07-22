@@ -2,23 +2,23 @@
 
 ## Распиновка GPIO
 
-![pinout rpi](a-and-b-physical-pin-numbers.png)
+![pinout rpi](kSo96fYwdrfQKSvALMKqzc-1200-80.png)
 
 ## используем прямой доступ к пинам через /sys
 
 В этом примере используем pin 18
 ```bash
 #   приготавливает пин для работы с ним
-echo "18" > /sys/class/gpio/export                  
+echo "24" > /sys/class/gpio/export                  
 
 # задает пину режим вывода (как pinMode в Ардуино)
-echo "out" > /sys/class/gpio/gpio18/direction
+echo "out" > /sys/class/gpio/gpio24/direction
 
 # Устанавливает высокий уровень на пин 18 (аналог digitalWrite)
-echo "1" > /sys/class/gpio/gpio18/value
+echo "1" > /sys/class/gpio/gpio24/value
 
 # Устанавливает ybprbq уровень на пин 18 (аналог digitalWrite)
-echo "0" > /sys/class/gpio/gpio18/value
+echo "0" > /sys/class/gpio/gpio24/value
 ```
 
 Для справки - чтение состояния пина (digitalRead)
@@ -37,7 +37,7 @@ import RPi.GPIO as GPIO # импорт библиотеки
 from time import sleep # функция sleep (аналог delay)
  
 GPIO.setwarnings(False) # игнорируем предупреждения
-GPIO.setmode(GPIO.BOARD) # режим физической маркировки пинов (как на самой плате)
+GPIO.setmode(GPIO.BOARD) # режим физической маркировки пинов (как на самой плате) или GPIO.BCM
 GPIO.setup(8, GPIO.OUT, initial=GPIO.LOW) # режим работы пина на вывод, начальное значение низкое.
 
 while True: # бесконечный цикл (аналон loop()
