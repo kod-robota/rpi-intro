@@ -1,0 +1,2 @@
+@reboot pi /home/pi/send_my_ip.sh >> /home/pi/send_my_ip.log 2>&1
+
